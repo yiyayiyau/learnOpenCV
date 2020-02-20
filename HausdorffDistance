@@ -1,0 +1,27 @@
+// q&a: https://answers.opencv.org/question/60974/matching-shapes-with-hausdorff-and-shape-context-distance/
+// src: https://docs.opencv.org/3.4.9/d4/d7c/shape__distance_8hpp.html
+// https://www.okcode.net/article/40637  学习
+
+#include <opencv2/shape/shape_distance.hpp>
+
+Mat grayImage;
+if (image.channels()==3 || image.channels() == 4)
+{
+    cvtColor(image, grayImage, COLOR_BGR2GRAY);
+}
+else{
+    grayImage = image.clone();
+}
+blur(grayImage, grayImage, Size(3,3));
+// show image
+namedWindow("grayImage", WINDOW_NORMAL);
+imshow("grayImage",grayImage);
+waitKey(0);
+
+Canny(grayImage, binarizedImage, thresh_begin, maximun_thresh,3);
+vector<Vec4i> hierarchy;
+vector<vector<Point>>& contours_o;
+findContours(binarizedImage, contours_o, hierarchy, RETR_CCOMP, CV_CHAIN_APPROX_NONE, Point(0,0));
+...
+Ptr<HausdorffDistanceExtractor> hdfd = createHausdorffDistanceExtractor();
+double hdfdC = hdfd->computeDistance(cContours[i], rContours[j]);
