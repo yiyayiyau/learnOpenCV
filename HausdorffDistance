@@ -1,5 +1,7 @@
 // q&a: https://answers.opencv.org/question/60974/matching-shapes-with-hausdorff-and-shape-context-distance/
+// src: https://docs.opencv.org/3.4.9/d1/d85/group__shape.html
 // src: https://docs.opencv.org/3.4.9/d4/d7c/shape__distance_8hpp.html
+// src: https://docs.opencv.org/3.4/d0/de1/classcv_1_1HausdorffDistanceExtractor.html#a36af13e0653ebb2d6677e68932010dfb
 // https://www.okcode.net/article/40637  学习
 
 #include <opencv2/shape/shape_distance.hpp>
