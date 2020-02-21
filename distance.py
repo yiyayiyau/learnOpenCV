@@ -1,5 +1,7 @@
 # https://blog.csdn.net/yixianfeng41/article/details/61917158
-# Fréchet distance(弗雷歇距离)-用于地图匹配> 主人走路径A，狗走路径B，各自走完这两条路径过程中所需要的最短狗绳长度。
+# Fréchet distance(弗雷歇距离)-用于地图匹配> 主人走路径A，狗走路径B，各自走完这两条路径过程中所需要的最短狗绳长度。-
+# original: https://blog.csdn.net/shine302/article/details/79863737
+# original of code: https://www.jianshu.com/p/268d31aee5c3
 # Hausdorff distance: if = 0, 即任意一个点到另一个集合的点的最小距离的最大值=0 也就是说与之重合
 
 
