@@ -4,12 +4,12 @@
 // It returns positive (inside), negative (outside), or zero (on an edge) value, correspondingly. 
 // When measureDist=false , the return value is +1, -1, and 0, respectively. 
 // Otherwise, the return value is a signed distance between the point and the nearest contour edge
-static bool lessP(const Points &lhs, const Points &rhs)
+static bool lessP(const Point &lhs, const Point &rhs)
 {
     return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
 };
 
-static bool greaterP(const Points &ohs, const Points &bhs)
+static bool greaterP(const Point &ohs, const Point &bhs)
 {
     return (ohs.y < bhs.y) || ((ohs.y == bhs.y) && (ohs.x < bhs.x));
 };
