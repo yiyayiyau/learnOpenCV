@@ -22,7 +22,7 @@ vector<Point2f> boundPoint(vector<Point> v1)
         v1.copyTo(v3);
 
         sort(v3.begin(), v3.end(), lessP);
-        Mat(v3.front()).convertTo(p1, p1.type());
+        Mat(v3.front()).convertTo(p1, p1.type()); // convert Point to Point2f
         v2.push_back(p1);//left bottom
         Mat(v3.back()).convertTo(p2, p2.type());
         v2.push_back(p2);// right oben
