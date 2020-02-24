@@ -20,19 +20,24 @@ vector<Point2f> boundPoint(vector<Point> v1)
     Point2f p1, p2, p3, p4;
     if (!v1.empty())
     {
-        v1.copyTo(v3);
+        copy(v1.begin(), v1.end(), back_inserter(v3));
+        //https://www.geeksforgeeks.org/ways-copy-vector-c/
 
         sort(v3.begin(), v3.end(), lessP);
-        Mat(v3.front()).convertTo(p1, p1.type()); // convert Point to Point2f
-        v2.push_back(p1);//left bottom
-        Mat(v3.back()).convertTo(p2, p2.type());
-        v2.push_back(p2);// right oben
+        //Mat(v3.front()).convertTo(p1, p1.type()); // convert Point to Point2f
+        //v2.push_back(p1);//left bottom
+        v2.push_back(v3.front());//left bottom
+        //Mat(v3.back()).convertTo(p2, p2.type());
+        //v2.push_back(p2);// right oben
+        v2.push_back(v3.back());// right oben
 
         sort(v3.begin(), v3.end(), greaterP);
-        Mat(v3.front()).convertTo(p3, p3.type());
-        v2.push_back(p3);//left oben
-        Mat(v3.back()).convertTo(p4, p4.type());
-        v2.push_back(p4);// right bottom
+        //Mat(v3.front()).convertTo(p3, p3.type());
+        //v2.push_back(p3);//left oben
+        v2.push_back(v3.front());//left oben
+        //Mat(v3.back()).convertTo(p4, p4.type());
+        //v2.push_back(p4);// right bottom
+        v2.push_back(v3.back());// right bottom
     }
     return v2;    
 
@@ -40,7 +45,21 @@ vector<Point2f> boundPoint(vector<Point> v1)
 
 void main()
 {
-//use findContours get cContours and use selectROI get ignoreare
+//use findContours get cContours and 
+    // readImage
+    referenceimage = imread(referenceimagename);
+    namedWindow("referenceimage/selectROI", WINDOW_NORMAL);
+    imshow("referenceimage/selectROI", referenceimage);
+    waitKey(0);
+    // use selectROI get ignoreare
+    rect_area = selectROI("referenceimage/selectROI", referenceimage);
+    LOG(INFO) << "recht_area is " << rect_area;
+    cv::Mat ignarea = referenceimage(rect_area);
+    namedWindow("ignore area", WINDOW_NORMAL);
+    imshow("ignore area", ignarea);
+    waitKey(0);
+    
+    
     vector<Point2f> boundPoints = boundPoint(cContours[i]);
     double inside_d = 1;
     for (size_t idx = 1, idx < boundPoints.size(), idx++)
