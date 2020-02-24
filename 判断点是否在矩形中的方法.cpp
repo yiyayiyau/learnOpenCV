@@ -8,6 +8,7 @@ static bool lessP(const Points &lhs, const Points &rhs)
 {
     return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
 };
+
 static bool greaterP(const Points &ohs, const Points &bhs)
 {
     return (ohs.y < bhs.y) || ((ohs.y == bhs.y) && (ohs.x < bhs.x));
@@ -36,6 +37,7 @@ vector<Point2f> boundPoint(vector<Point> v1)
     return v2;    
 
 }
+
 void main()
 {
 //use findContours get cContours and use selectROI get ignoreare
