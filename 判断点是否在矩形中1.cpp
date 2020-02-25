@@ -45,29 +45,44 @@ vector<Point2f> boundPoint(vector<Point> v1)
 
 void main()
 {
-//use findContours get cContours and 
     // readImage
-    referenceimage = imread(referenceimagename);
+    Mat referenceimage = imread(referenceimagename);
     namedWindow("referenceimage/selectROI", WINDOW_NORMAL);
     imshow("referenceimage/selectROI", referenceimage);
     waitKey(0);
     // use selectROI get ignoreare
     rect_area = selectROI("referenceimage/selectROI", referenceimage);
     LOG(INFO) << "recht_area is " << rect_area;
-    cv::Mat ignarea = referenceimage(rect_area);
+    Point2f lt, lb, rt, rb;
+    lt = rect_area.tl(); 
+    lb = Point2f(rect_area.x, rect_area.y + rect_area.height);
+    rt = Point2f(rect_area.x + rect_area.width, rect_area.y);
+    rb = rect_area.br();
+    Point2f corners[4] = {lt, lb, rt, rb};
+    Point2f *lastItemPointer = (corners+sizeof(corners)/sizeof(corners[0]));
+    // LOG(INFO) << "lastItemPointer" << lastItemPointer;
+    vector<Point2f> ignoreare(corners, lastItemPointer);
+    
     namedWindow("ignore area", WINDOW_NORMAL);
-    imshow("ignore area", ignarea);
+    imshow("ignore area", ignoreare);
     waitKey(0);
+    // find Contours
+    Mat grayImage, binarizedImage; 
+    blur(referenceimage, grayImage, Size(3,3));
+    // threshold(grayImage, binarizedImage, thresh, 255, THRESH_BINARY);
+    Canny(grayImage, binarizedImage, thresh, maximun_thresh,3);
+    vector<vector<Point>> contours_v;
+    vector<Vec4i> hierarchy;
+    findContours(binarizedImage, contours_v, hierarchy, RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, Point(0,0));
+    vector<Point2f> boundPoints = boundPoint(contours_v[i]);
     
-    
-    vector<Point2f> boundPoints = boundPoint(cContours[i]);
     double inside_d = 1;
     for (size_t idx = 1, idx < boundPoints.size(), idx++)
     {
-        double inside_d1 = pointpolygonTest(ignoreare, boundPoints[idx], false);
+        double inside_d1 = pointPolygonTest(ignoreare, boundPoints[idx], false);
         inside_d += inside_d1;
     }
-    if (inside_d -4 < 1e-2)
+    if (inside_d -4 ==0)
     {
         cout<<"the contour is inside of the Rectangle";
     }
