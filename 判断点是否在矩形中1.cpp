@@ -6,7 +6,7 @@
 // Otherwise, the return value is a signed distance between the point and the nearest contour edge
 static bool lessP(const Point &lhs, const Point &rhs)
 {
-    return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
+    return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y > rhs.y));
 };
 
 static bool greaterP(const Point &ohs, const Point &bhs)
@@ -53,12 +53,12 @@ void main()
     // use selectROI get ignoreare
     rect_area = selectROI("referenceimage/selectROI", referenceimage);
     LOG(INFO) << "recht_area is " << rect_area;
-    Point2f lt, lb, rt, rb;
+    Point2f lt, lb, rb, rt;
     lt = rect_area.tl(); 
     lb = Point2f(rect_area.x, rect_area.y + rect_area.height);
     rt = Point2f(rect_area.x + rect_area.width, rect_area.y);
     rb = rect_area.br();
-    Point2f corners[4] = {lt, lb, rt, rb};
+    Point2f corners[4] = {lt, lb, rb, rt};
     Point2f *lastItemPointer = (corners+sizeof(corners)/sizeof(corners[0]));
     // LOG(INFO) << "lastItemPointer" << lastItemPointer;
     vector<Point2f> ignoreare(corners, lastItemPointer);
@@ -76,13 +76,13 @@ void main()
     findContours(binarizedImage, contours_v, hierarchy, RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, Point(0,0));
     vector<Point2f> boundPoints = boundPoint(contours_v[i]);
     
-    double inside_d = 1;
-    for (size_t idx = 1, idx < boundPoints.size(), idx++)
+    double inside_d = 0;
+    for (size_t idx = 0, idx < boundPoints.size(), idx++)
     {
         double inside_d1 = pointPolygonTest(ignoreare, boundPoints[idx], false);
         inside_d += inside_d1;
     }
-    if (inside_d -4 ==0)
+    if (inside_d ==4)
     {
         cout<<"the contour is inside of the Rectangle";
     }
