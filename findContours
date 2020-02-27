@@ -1,1 +1,22 @@
 //src: https://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html#id1
+//src: https://blog.csdn.net/qq_41895190/article/details/82905657
+//findContour with more than 1 threshhold
+//idea: mat add, not contour!
+// function: bitwise_and, bitwise_or, bitwise_xor, bitwise_not
+
+Mat grayImage, grayImage1, binarizedImage, binarizedImage1;  
+for (double thresh = thresh_begin+thresh_step; thresh < thresh_end; thresh += thresh_step)
+{
+    // LOG(INFO) << "threshold is " << thresh;
+    // binarizedImage1.release(); 
+    blur(grayImage, grayImage1, Size(3,3));
+    // threshold(grayImage, binarizedImage1, thresh, 255, THRESH_BINARY);
+    Canny(grayImage1, binarizedImage1, thresh, maximun_thresh,3);
+    bitwise_or(binarizedImage, binarizedImage1, binarizedImage);
+    // namedWindow("binarizedImage", WINDOW_NORMAL);
+    // imshow("binarizedImage", binarizedImage);
+    // findContours(binarizedImage, contours_o, hierarchy, RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, Point(0,0));
+    // LOG(INFO)<< "size of contours is " << contours_o.size();
+    // waitKey();
+}
+findContours(binarizedImage, contours_o, hierarchy, RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, Point(0,0));
