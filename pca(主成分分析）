@@ -1,1 +1,11 @@
 // src:  https://www.cnblogs.com/jsxyhelu/p/7690699.html
+// src: https://docs.opencv.org/master/d3/d8d/classcv_1_1PCA.html#a50ad1a87273a258055a331d5a4c63ce4
+//Goal: 找到主方向, 计算旋转角, 用features和角度找到11对应的features, 剩下的features 即 blobs
+
+https://docs.opencv.org/master/d3/db0/samples_2cpp_2pca_8cpp-example.html#a26
+https://docs.opencv.org/master/d3/d8d/classcv_1_1PCA.html#a5f84cfbdb25b9833cc1bfb5bd484ea79
+http://www.dataguru.cn/article-12140-1.html
+https://cloud.tencent.com/developer/article/1165875
+https://www.cnblogs.com/jsxyhelu/p/7690699.html
+https://docs.opencv.org/3.4/d5/de8/samples_2cpp_2segment_objects_8cpp-example.html#a1
+https://www.google.com/search?q=opencv+%E6%89%BE%E5%88%B0%E5%9B%BE%E7%89%87%E7%9A%84%E4%B8%BB%E6%96%B9%E5%90%91&ie=utf-8&oe=utf-8&client=firefox-b-e
