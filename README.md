@@ -6,3 +6,5 @@
 * 教程 https://docs.opencv.org/trunk/d9/df8/tutorial_root.html
 * 社区 https://answers.opencv.org/questions/
 * markdown命令 https://blog.csdn.net/witnessai1/article/details/52551362
+
+https://www.zhipin.com/gongsir/88eda0455aef15d20HV72dS1.html?ka=all-jobs-hot
