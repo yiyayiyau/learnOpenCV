@@ -2,7 +2,7 @@
 ## 头文件
 头文件位于modules文件夹中, 例如imgproc.hpp 存在于 .../modules/imgproc/include/opencv2/imgproc/imgproc.hpp
 用哪个就调用哪个,不会减慢编译的速度
-'
+´
 #include "opencv2/core/core.hpp" // 结构及数学运算
 #include "opencv2/flann/miniflann.hpp" //最临近搜索匹配函数
 #include "opencv2/imgproc/imgproc.hpp" //图像处理函数
@@ -16,4 +16,5 @@
 #include "opencv2/contrib/contrib.hpp" //皮肤检测,模糊Mean-Shift追踪,spin image算法及自相似特征
 //可以调用遗留代码,旧的斑点追踪,隐函马尔可夫模型检测,聚合追踪及特征目标
 #include "opencv2/legacy/legacy.hpp"
-'
+´
+`...`
