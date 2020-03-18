@@ -9,6 +9,8 @@ int main(int argc, char** argv){
     
     img = cv::imread( argv[1] );
     cv::imshow("Example1", img1);
+    
+    cv::pyrDown( img1, img2);
     cv::imshow("Example2", img2);
     
     cv::waitKey(0);
