@@ -17,4 +17,5 @@
         //可以调用遗留代码,旧的斑点追踪,隐函马尔可夫模型检测,聚合追踪及特征目标
         #include "opencv2/legacy/legacy.hpp"
 
-# 1.code
+## code2-1, code2-2 显示图片
+## code2-3 播放视频
