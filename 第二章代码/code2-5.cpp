@@ -19,3 +19,4 @@ void example2_5(const cv::Mat & image){
     destroyWindow("Example2_5-in");
     destroyWindow("Example2_5-out");
 }
+ 
