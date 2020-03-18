@@ -16,5 +16,6 @@ void example2_5(const cv::Mat & image){
     cv::imshow("Example2_5-out", out);
     cv::waitKey(0);
     
-    destory();
+    destroyWindow("Example2_5-in");
+    destroyWindow("Example2_5-out");
 }
