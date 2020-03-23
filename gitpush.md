@@ -23,4 +23,12 @@
         git rm -r --cached pathname //--cached 不删除本地文件夹
         git commit -m 'delete ...dir'
         git push -u github master
+        恢复以前版本
+        git checkout -- pathname // 用版本库中的版本替换工作区的版本
 
+        从本地文件删除，之后可以从版本库中恢复
+        rm pathname
+        要是commit，版本库中也会删除。实质是对删除操作做了一次记录，
+        然后生成一个新的版本号，在该版本下没有该文件。可以使用 
+        git reset --hard commit_id //commit_id 是原版本的版本号
+        来恢复
