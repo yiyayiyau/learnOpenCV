@@ -82,3 +82,18 @@
         然后生成一个新的版本号，在该版本下没有该文件。可以使用 
         git reset --hard commit_id //commit_id 是原版本的版本号
         来恢复
+
+
+        //在 dev分支上
+        git branch
+        git add xxx
+        git commit -m 'xxxx' 'dev'
+        git push -u origin dev
+
+        git checkout master
+        git pull origin master
+        git merge dev
+
+        git status
+
+        git push origin master
